@@ -8,5 +8,6 @@ import (
 func Api() *gin.Engine {
 	r := gin.Default()
 	r.GET("user", Controllers.User)
+	r.GET("user/excel", Controllers.Excel)
 	return r
 }
