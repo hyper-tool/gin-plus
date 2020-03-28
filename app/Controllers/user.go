@@ -1,6 +1,7 @@
 package Controllers
 
 import (
+	"fmt"
 	"gin-plus/app/Models"
 	"github.com/360EntSecGroup-Skylar/excelize"
 	"github.com/gin-gonic/gin"
@@ -19,8 +20,16 @@ func Excel(c *gin.Context) {
 	// Create a new sheet.
 	index := f.NewSheet("Sheet2")
 	// Set value of a cell.
-	f.SetCellValue("Sheet2", "A2", "Hello world.")
-	f.SetCellValue("Sheet1", "B2", 100)
+	for i := 1; i < 30000; i++ {
+		f.SetCellValue("Sheet1", fmt.Sprintf("A%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("B%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("C%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("D%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("E%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("F%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("G%d", i), 100)
+		f.SetCellValue("Sheet1", fmt.Sprintf("H%d", i), 100)
+	}
 	// Set active sheet of the workbook.
 	f.SetActiveSheet(index)
 	// Save xlsx file by the given path.
